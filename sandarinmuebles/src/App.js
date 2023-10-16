@@ -3,9 +3,6 @@ import { BrowserRouter as Router, Route, Routes, Navigate, Link } from 'react-ro
 import Home from './components/Home';
 import AdminDashboard from './components/AdminDashboard';
 import ClientDashboard from './components/ClientDashboard';
-import Login from './components/Auth/Login';
-import AboutUs from './components/AboutUs';
-import LandingPage from './components/LandingPage';
 import PropertyDetail from './components/PropertyDetail';
 import PropertyList from './components/PropertyList';
 

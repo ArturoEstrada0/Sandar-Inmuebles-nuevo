@@ -1,0 +1,18 @@
+/* Estilo global para el cuerpo y elementos de nivel superior */
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3, p, a {
+    font-family: 'Lato', sans-serif;
+}
+
+.lato-text {
+    font-family: 'Lato', sans-serif;
+}
+
+/* No es necesario aplicar estilos a la etiqueta title, como se mencionó anteriormente */
+/* Estilo para el componente Title con la fuente Lato */
+.about-us-title {
+    font-family: 'Lato', sans-serif;
+}

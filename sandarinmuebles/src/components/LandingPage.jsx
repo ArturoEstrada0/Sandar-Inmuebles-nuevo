@@ -1,84 +1,93 @@
 import React, { useEffect, useState } from 'react';
-import { Layout, Typography, Button, Card, Row, Col } from 'antd';
+import { Layout, Row, Col, Button, Typography, Form, Input, message, Card } from 'antd';
 import { Link } from 'react-router-dom';
-import banner1 from '../assets/img/houses/banner.jpg';
-import banner3 from '../assets/img/houses/banner-3.jpg';
-import banner2 from '../assets/img/houses/banner-4.jpg';
-import ReactPlayer from 'react-player';
-import ImageCarousel from './ImageCarousel';
-import Testimonials from './Testimonials'; // Importa el componente Testimonials
 import './LandingPage.css';
+import backgroundImage1 from '../assets/img/houses/banner.jpg';
+import backgroundImage2 from '../assets/img/houses/banner-2.jpg';
+import backgroundImage3 from '../assets/img/houses/banner-3.jpg';
+import CountUp from 'react-countup';
 
 const { Content } = Layout;
 const { Title, Paragraph } = Typography;
 
 function LandingPage() {
-    const [showFirstImage, setShowFirstImage] = useState(true);
+    const [animated, setAnimated] = useState(false);
     const [currentImage, setCurrentImage] = useState(1);
-    const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-
-    const handleVideoPlay = () => {
-        setIsVideoPlaying(true);
-    };
+    const images = [backgroundImage1, backgroundImage2, backgroundImage3];
 
     useEffect(() => {
-        const bannerImages = document.querySelectorAll('.landing-page-banner-image');
-        const totalImages = bannerImages.length;
-        let currentIndex = currentImage;
+        setAnimated(true);
 
-        const changeImage = () => {
-            if (showFirstImage) {
-                setShowFirstImage(false);
-            }
-            bannerImages[currentIndex].style.opacity = '0';
-            currentIndex = (currentIndex + 1) % totalImages;
-            bannerImages[currentIndex].style.opacity = '1';
-            setCurrentImage(currentIndex);
-        };
-
-        const initialDelay = 5000;
-        const interval = setInterval(changeImage, initialDelay);
+        const interval = setInterval(() => {
+            setCurrentImage((prevImage) => (prevImage % images.length) + 1);
+        }, 4000);
 
         return () => {
             clearInterval(interval);
         };
-    }, [currentImage, showFirstImage]);
+    }, []);
 
     return (
         <Content>
-            <div className="landing-page-container">
-                <div className="landing-page-banner">
-                    <div className={`landing-page-banner-image ${showFirstImage ? "show-first-image" : ""}`} style={{ backgroundImage: `url(${banner1})` }}>
-                        <div className="image-overlay"></div>
-                    </div>
-                    <div className="landing-page-banner-image" style={{ backgroundImage: `url(${banner2})` }}>
-                        <div className="image-overlay"></div>
-                    </div>
-                    <div className="landing-page-banner-image" style={{ backgroundImage: `url(${banner3})` }}>
-                        <div className="image-overlay"></div>
-                    </div>
-                    <Col span={24}>
-                        <div className="banner-content">
-                            <h1 className="banner-title">Bienvenido a Sandar Inmuebles</h1>
-                            <p className="banner-description">Encuentra la casa de tus sueños con nosotros.</p>
+            <div className="landing-page-container" style={{ height: '70vh', marginLeft: '30px' }}>
+                <Row gutter={16} style={{ height: '100%' }}>
+                    <Col xs={{ span: 24 }} md={{ span: 9 }} style={{ height: '40vh' }}>
+                        <div className="landing-page-text" style={{ height: '100%', padding: '0 15px' }}>
+                            <Title level={2} style={{ fontSize: '2.5rem', fontFamily: 'Lato, sans-serif' }}>
+                                Encuentra la Casa de Tus Sueños con Nosotros
+                            </Title>
+
+                            <Paragraph style={{ fontSize: '1.2rem', fontFamily: 'Lato, sans-serif' }}>
+                                Encuentra la casa de tus sueños con nosotros. Te ofrecemos una amplia variedad de opciones
+                                que se adaptarán a tus necesidades. ¡Explora nuestros inmuebles ahora!
+                            </Paragraph>
                             <Link to="/inmuebles">
-                                <Button size="large" className="banner-button">
+                                <Button
+                                    size="large"
+                                    className="banner-button"
+                                    style={{
+                                        background: 'black',
+                                        color: 'white',
+                                        border: '1px solid white',
+                                        borderRadius: '4px',
+                                        padding: '30px 30px',
+                                        fontWeight: 'bold',
+                                        fontSize: '1rem',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                    }}
+                                >
                                     Ver Inmuebles
                                 </Button>
                             </Link>
+                            <Row gutter={16} style={{ marginTop: '20px' }}>
+                                <Col xs={{ span: 24 }} md={{ span: 8 }} className={`landing-page-stat ${animated ? 'animated' : ''}`}>
+                                    <div className="landing-page-stat-number">
+                                        <CountUp end={300} duration={5} />+
+                                    </div>
+                                    <div className="landing-page-stat-title">Propiedades Disponibles</div>
+                                </Col>
+                                <Col xs={{ span: 24 }} md={{ span: 8 }} className={`landing-page-stat ${animated ? 'animated' : ''}`}>
+                                    <div className="landing-page-stat-number">
+                                        <CountUp end={1000} duration={5} />+
+                                    </div>
+                                    <div className="landing-page-stat-title">Inmuebles Vendidos</div>
+                                </Col>
+                                <Col xs={{ span: 24 }} md={{ span: 8 }} className={`landing-page-stat ${animated ? 'animated' : ''}`}>
+                                    <div className="landing-page-stat-number">
+                                        <CountUp end={95} duration={5} />%
+                                    </div>
+                                    <div className="landing-page-stat-title">Clientes Satisfechos</div>
+                                </Col>
+                            </Row>
                         </div>
                     </Col>
-                </div>
-                <Testimonials /> {/* Agrega la sección de testimonios */}
-                <div className="contact-section">
-                    {/* ... Resto del código de la página de inicio */}
-                </div>
-                <div className="image-carousel-container">
-                    <ImageCarousel />
-                </div>
-                <div className="additional-content">
-                    {/* ... Resto del código de la página de inicio */}
-                </div>
+                    <Col xs={{ span: 0 }} md={{ span: 15 }} style={{ height: '60vh' }}>
+                        <div className="landing-page-image" style={{ height: '100%', backgroundImage: `url(${images[currentImage - 1]})` }}>
+                        </div>
+                    </Col>
+                </Row>
             </div>
         </Content>
     );
