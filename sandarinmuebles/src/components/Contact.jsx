@@ -8,13 +8,9 @@ import {
   EnvironmentOutlined,
   ClockCircleOutlined,
   QuestionCircleOutlined,
-  HomeOutlined,
-  CloseOutlined,
   UserOutlined,
-  PlusOutlined,
-  CheckCircleOutlined,
-  EyeOutlined,
-  EnvironmentTwoTone, // Icono adicional
+  EnvironmentTwoTone,
+  PlusCircleFilled,
 } from '@ant-design/icons';
 
 const { Content } = Layout;
@@ -26,9 +22,7 @@ const { TabPane } = Tabs;
 function Contact() {
   const [isDrawerVisible, setDrawerVisible] = useState(false);
 
-  // Función para manejar el envío del formulario
   const submitFormToServer = (values) => {
-    // Aquí puedes agregar la lógica para enviar el formulario al servidor
     console.log('Formulario enviado:', values);
     setDrawerVisible(false);
   };
@@ -36,10 +30,8 @@ function Contact() {
   return (
     <Content className="contact-content">
       <div className="contact-container">
-        <Title level={2} className="contact-title">
-          Contacto
-        </Title>
-        <Button type="primary" onClick={() => setDrawerVisible(true)}>
+        <Title level={2} className="contact-title">Contacto</Title>
+        <Button type="primary" icon={<PlusCircleFilled />} onClick={() => setDrawerVisible(true)}>
           Contactar
         </Button>
         <Tabs defaultActiveKey="1">
@@ -50,6 +42,7 @@ function Contact() {
               dataSource={[
                 <span><EnvironmentOutlined /> Dirección: 123 Calle Principal, Ciudad</span>,
                 <span><PhoneOutlined /> Teléfono: (123) 456-7890</span>,
+                <span><MailOutlined /> Correo Electrónico: principal@example.com</span>,
               ]}
               renderItem={(item) => <List.Item>{item}</List.Item>}
             />
@@ -60,6 +53,7 @@ function Contact() {
               dataSource={[
                 <span><EnvironmentOutlined /> Dirección: 456 Avenida Principal, Ciudad</span>,
                 <span><PhoneOutlined /> Teléfono: (987) 654-3210</span>,
+                <span><MailOutlined /> Correo Electrónico: ventas@example.com</span>,
               ]}
               renderItem={(item) => <List.Item>{item}</List.Item>}
             />
@@ -113,6 +107,7 @@ function Contact() {
               dataSource={[
                 <span><EnvironmentTwoTone twoToneColor="#52c41a" /> Dirección: 789 Calle Secundaria, Ciudad</span>,
                 <span><PhoneOutlined /> Teléfono: (123) 555-6789</span>,
+                <span><MailOutlined /> Correo Electrónico: secundaria@example.com</span>,
               ]}
               renderItem={(item) => <List.Item>{item}</List.Item>}
             />
@@ -150,11 +145,11 @@ function Contact() {
             <Input />
           </Form.Item>
           <Form.Item
-            label={<span><PlusOutlined /> Mensaje</span>}
+            label={<span><PlusCircleFilled /> Mensaje</span>}
             name="message"
             rules={[{ required: true, message: 'Por favor, ingresa tu mensaje' }]}
           >
-            <TextArea rows={4} />
+            <TextArea rows={6} />
           </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit">
