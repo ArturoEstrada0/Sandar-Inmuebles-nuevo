@@ -6,7 +6,7 @@ import Contact from './Contact';
 import PropertyList from './PropertyList';
 import PropertyDetail from './PropertyDetail';
 import { Slider } from 'antd';
-import Footer from './Footer';
+import Footer  from './Footer';
 import ChatBubble from './ChatBubble';
 
 
