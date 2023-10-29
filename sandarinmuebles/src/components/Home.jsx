@@ -1,13 +1,13 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
-import LandingPage from './LandingPage';
-import AboutUs from './AboutUs';
-import Contact from './Contact';
-import PropertyList from './PropertyList';
-import PropertyDetail from './PropertyDetail';
+import LandingPage from './LandingPage/LandingPage';
+import AboutUs from './AboutUs/AboutUs';
+import Contact from './Contact/Contact';
+import PropertyList from './PropertyList/PropertyList';
+import PropertyDetail from './PropertyDetail/PropertyDetail';
 import { Slider } from 'antd';
-import Footer  from './Footer';
-import ChatBubble from './ChatBubble';
+import Footer  from './Footer/Footer';
+import ChatBubble from './Chat/ChatBubble';
 
 
 const { Header, Content } = Layout;
@@ -35,9 +35,9 @@ function Home() {
         {/* Contenido principal de la página */}
         <div className="site-layout-content">
           <LandingPage />
+          <PropertyList />
           <AboutUs />
           <Contact />
-          <PropertyList />
         </div>
 
         <ChatBubble />

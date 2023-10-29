@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { WhatsAppOutlined, MailOutlined, CommentOutlined } from '@ant-design/icons';
 import { FloatButton, Modal, Input, Button, Select } from 'antd';
+import "./ChatBubble.css" // Asegúrate de importar tu archivo CSS
 
 const { Option } = Select;
 
@@ -32,11 +33,10 @@ function ChatBubble() {
         <>
             <FloatButton.Group
                 trigger="hover"
-                type="primary"
                 style={{
                     right: 25,
                 }}
-                icon={<CommentOutlined />}
+                icon={<CommentOutlined /> /* Color del icono */}
             >
                 <a href={`mailto:arturoestrada301@gmail.com`} target="_blank" rel="noopener noreferrer">
                     <FloatButton icon={<MailOutlined />} />

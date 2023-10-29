@@ -1,6 +1,6 @@
 import React from 'react';
-import { Layout } from 'antd';
-import { AntDesignOutlined } from '@ant-design/icons';
+import { Layout } from'antd';
+import logo from '../../assets/img/logo.png'; // Asegúrate de importar tu logotipo correctamente
 
 const { Footer: AntFooter } = Layout;
 
@@ -10,9 +10,9 @@ function Footer() {
   };
 
   return (
-    <AntFooter style={{ backgroundColor: '#b5b5b5' }}>
+    <AntFooter style={{ backgroundColor: '#171717' }}>
       <div style={{ textAlign: 'center', color: '#fff' }}>
-        <AntDesignOutlined style={{ fontSize: '50px', color: '#fff' }} />
+      <img src={logo} alt="Mi logotipo" style={{ width: '60px', height: '50px' }} />
         <p style={{ color: '#f0f2f5' }}>Descubre tu hogar ideal con nosotros. 
         Nuestro compromiso es ayudarte a encontrar la propiedad que siempre has soñado. 
         Contáctanos hoy y deja que hagamos realidad tus sueños inmobiliarios.</p>

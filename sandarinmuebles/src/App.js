@@ -1,11 +1,16 @@
-import { BrowserRouter as Router, Route, Routes, Navigate, Link } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+  Link,
+} from "react-router-dom";
 // Importa tus componentes
-import Home from './components/Home';
-import AdminDashboard from './components/AdminDashboard';
-import ClientDashboard from './components/ClientDashboard';
-import PropertyDetail from './components/PropertyDetail';
-import PropertyList from './components/PropertyList';
-
+import Home from "./components/Home";
+import AdminDashboard from "./components/Admin/AdminDashboard";
+import ClientDashboard from "./components/Client/ClientDashboard";
+import PropertyDetail from "./components/PropertyDetail/PropertyDetail";
+import PropertyList from "./components/PropertyList/PropertyList";
 
 // Crea una función que verifica el rol del usuario
 const checkUserRole = () => {
@@ -15,7 +20,7 @@ const checkUserRole = () => {
 
 // Rutas protegidas
 function AdminRoute({ children }) {
-  if (checkUserRole() === 'admin') {
+  if (checkUserRole() === "admin") {
     return children;
   } else {
     return <Navigate to="/" />;
@@ -23,7 +28,7 @@ function AdminRoute({ children }) {
 }
 
 function ClientRoute({ children }) {
-  if (checkUserRole() === 'client') {
+  if (checkUserRole() === "client") {
     return children;
   } else {
     return <Navigate to="/" />;
@@ -51,8 +56,8 @@ function App() {
             </ClientRoute>
           }
         />
-        <Route exact path="/" element={<PropertyList/>} />
-        <Route path="/property/:id" element={<PropertyDetail/>} />
+        <Route exact path="/" element={<PropertyList />} />
+        <Route path="/property/:id" element={<PropertyDetail />} />
       </Routes>
     </Router>
   );

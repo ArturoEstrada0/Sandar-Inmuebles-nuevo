@@ -3,10 +3,10 @@ import { Layout, Typography, Row, Col, Statistic, Divider } from 'antd';
 import { ApartmentOutlined, HomeOutlined } from '@ant-design/icons';
 import './AboutUs.css';
 
-import image1 from '../assets/img/houses/house5.png';
-import image2 from '../assets/img/houses/house6.png';
-import image3 from '../assets/img/houses/house7.png';
-import image4 from '../assets/img/houses/house8.png';
+import image1 from '../../assets/img/houses/house5.png';
+import image2 from '../../assets/img/houses/house6.png';
+import image3 from '../../assets/img/houses/house7.png';
+import image4 from '../../assets/img/houses/house8.png';
 
 const { Content } = Layout;
 const { Title, Paragraph } = Typography;
@@ -53,7 +53,7 @@ const AboutUsStats = () => (
     <Row gutter={16}>
       <Col span={12}>
         <StatisticCard
-          icon={<ApartmentOutlined style={{ fontSize: '34px' }} />}
+          icon={<ApartmentOutlined style={{ fontSize: '34px', }} />}
           title="Años de Experiencia"
           value={20}
           color="#1890ff"
